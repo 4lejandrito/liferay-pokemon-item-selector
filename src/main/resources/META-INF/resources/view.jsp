@@ -41,6 +41,7 @@
 		var itemSelectorDialog = new ItemSelectorDialog.default({
 			eventName: '<%= eventName %>',
 			title: 'Select a pokemon',
+			singleSelect: true,
 			url:'<%= itemSelectorURL %>',
 		});
 
