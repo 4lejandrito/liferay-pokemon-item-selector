@@ -26,9 +26,15 @@
 	label="Select Pokemon"
 />
 
+<h1 id="pokemonTitle"></h1>
+
 <aui:script require="frontend-js-web/liferay/ItemSelectorDialog.es as ItemSelectorDialog">
 	var selectPokemonBtn = document.getElementById(
 		'selectPokemonBtn'
+	);
+
+	var pokemonTitle = document.getElementById(
+		'pokemonTitle'
 	);
 
 	selectPokemonBtn.addEventListener('click', function (event) {
@@ -39,5 +45,11 @@
 		});
 
 		itemSelectorDialog.open();
+
+		itemSelectorDialog.on('selectedItemChange', function (event) {
+			if (event.selectedItem) {//always check this, will be null is user cancel or close the dialog
+				pokemonTitle.innerText = event.selectedItem.value;
+			}
+		});
 	});
 </aui:script>
