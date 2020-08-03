@@ -18,7 +18,7 @@
 
 <%
 	String itemSelectorURL = (String)request.getAttribute("itemSelectorURL");
-	String eventName = "";
+	String eventName = (String)request.getAttribute("eventName");
 %>
 
 <clay:button
