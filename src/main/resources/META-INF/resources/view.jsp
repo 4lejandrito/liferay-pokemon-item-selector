@@ -16,4 +16,28 @@
 
 <%@ include file="/init.jsp" %>
 
-<a href="<%= (String)request.getAttribute("itemSelectorURL") %>">Select Pokémon</a>
+<%
+	String itemSelectorURL = (String)request.getAttribute("itemSelectorURL");
+	String eventName = "";
+%>
+
+<clay:button
+	id="selectPokemonBtn"
+	label="Select Pokemon"
+/>
+
+<aui:script require="frontend-js-web/liferay/ItemSelectorDialog.es as ItemSelectorDialog">
+	var selectPokemonBtn = document.getElementById(
+		'selectPokemonBtn'
+	);
+
+	selectPokemonBtn.addEventListener('click', function (event) {
+		var itemSelectorDialog = new ItemSelectorDialog.default({
+			eventName: '<%= eventName %>',
+			title: 'Select a pokemon',
+			url:'<%= itemSelectorURL %>',
+		});
+
+		itemSelectorDialog.open();
+	});
+</aui:script>
