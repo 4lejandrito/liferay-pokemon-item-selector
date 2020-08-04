@@ -26,15 +26,27 @@ String eventName = (String)request.getAttribute("eventName");
 	label="Select Pokemon"
 />
 
-<h1 id="pokemonTitle"></h1>
+<div class="hide" id="pokemonPreview" style="text-align: center;">
+	<h1 id="pokemonTitle"></h1>
+
+	<img id="pokemonImage" src="" />
+</div>
 
 <aui:script require="frontend-js-web/liferay/ItemSelectorDialog.es as ItemSelectorDialog">
 	var selectPokemonBtn = document.getElementById(
 		'selectPokemonBtn'
 	);
 
+	var pokemonPreview = document.getElementById(
+		'pokemonPreview'
+	);
+
 	var pokemonTitle = document.getElementById(
 		'pokemonTitle'
+	);
+
+	var pokemonImage = document.getElementById(
+		'pokemonImage'
 	);
 
 	selectPokemonBtn.addEventListener('click', function (event) {
@@ -48,8 +60,18 @@ String eventName = (String)request.getAttribute("eventName");
 		itemSelectorDialog.open();
 
 		itemSelectorDialog.on('selectedItemChange', function (event) {
-			if (event.selectedItem) {//always check this, will be null is user cancel or close the dialog
-				pokemonTitle.innerText = event.selectedItem.value;
+			var selectedItem = event.selectedItem;
+
+			if (selectedItem) {//always check this, will be null is user cancel or close the dialog
+				var itemValue = JSON.parse(selectedItem.value);
+
+				pokemonTitle.innerText = itemValue.name;
+				pokemonImage.src= itemValue.image;
+
+				pokemonPreview.classList.remove('hide');
+			}
+			else {
+				pokemonPreview.classList.add('hide');
 			}
 		});
 	});
