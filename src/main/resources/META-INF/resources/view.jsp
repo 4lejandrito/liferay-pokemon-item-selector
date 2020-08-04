@@ -17,8 +17,8 @@
 <%@ include file="/init.jsp" %>
 
 <%
-	String itemSelectorURL = (String)request.getAttribute("itemSelectorURL");
-	String eventName = (String)request.getAttribute("eventName");
+String itemSelectorURL = (String)request.getAttribute("itemSelectorURL");
+String eventName = (String)request.getAttribute("eventName");
 %>
 
 <clay:button

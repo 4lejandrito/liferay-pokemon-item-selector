@@ -64,18 +64,18 @@ public class PokemonPortlet extends MVCPortlet {
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
 
-		String eventName = _portal.getPortletNamespace(_portal.getPortletId(renderRequest)) +
+		String eventName =
+			_portal.getPortletNamespace(_portal.getPortletId(renderRequest)) +
 				"selectPokemon";
 
 		PortletURL itemSelectorURL = _itemSelector.getItemSelectorURL(
-			RequestBackedPortletURLFactoryUtil.create(renderRequest),
-			eventName, new PokemonItemSelectorCriterion());
+			RequestBackedPortletURLFactoryUtil.create(renderRequest), eventName,
+			new PokemonItemSelectorCriterion());
 
 		renderRequest.setAttribute(
 			"itemSelectorURL", itemSelectorURL.toString());
 
-		renderRequest.setAttribute(
-			"eventName", eventName);
+		renderRequest.setAttribute("eventName", eventName);
 
 		super.render(renderRequest, renderResponse);
 	}
