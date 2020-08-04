@@ -20,6 +20,7 @@ import com.liferay.item.selector.ItemSelectorViewDescriptor;
 import com.liferay.item.selector.ItemSelectorViewDescriptorRenderer;
 import com.liferay.portal.kernel.dao.search.SearchContainer;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.json.JSONUtil;
 import com.liferay.portal.kernel.language.Language;
 import com.liferay.portal.kernel.util.JavaConstants;
 import com.liferay.talks.item.selector.internal.pokemon.Pokemon;
@@ -94,7 +95,13 @@ public class PokemonItemSelectorView
 
 						@Override
 						public String getPayload() {
-							return pokemon.getName();
+							return JSONUtil.put(
+								"image", pokemon.getImageURL()
+							).put(
+								"name", pokemon.getName()
+							).put(
+								"type", pokemon.getType()
+							).toString();
 						}
 
 						@Override
