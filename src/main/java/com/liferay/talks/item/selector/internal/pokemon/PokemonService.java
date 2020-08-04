@@ -46,7 +46,9 @@ public class PokemonService {
 
 		try {
 			JSONObject jsonObject = _fetchJSONObject(
-				"https://pokeapi.co/api/v2/pokemon?offset=" + start);
+				String.format(
+					"https://pokeapi.co/api/v2/pokemon?offset=%s&limit=%s",
+					start, Math.min(end, getPokemonCount()) - start));
 
 			JSONArray resultsJSONArray = jsonObject.getJSONArray("results");
 
