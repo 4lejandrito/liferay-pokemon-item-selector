@@ -15,4 +15,9 @@
 --%>
 
 <%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %><%@
-taglib uri="http://liferay.com/tld/clay" prefix="clay" %>
+taglib uri="http://liferay.com/tld/clay" prefix="clay" %><%@
+taglib uri="http://liferay.com/tld/react" prefix="react" %>
+
+<%@ page import="com.liferay.portal.kernel.util.HashMapBuilder" %>
+
+<%@ page import="java.util.Map" %>
