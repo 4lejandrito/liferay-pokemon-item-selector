@@ -12,17 +12,12 @@
  * details.
  */
 
-package com.liferay.talks.item.selector.internal.pokemon;
+package com.liferay.pokemon.item.selector.web.internal.item.selector;
+
+import com.liferay.item.selector.ItemSelectorReturnType;
 
 /**
  * @author Alejandro Tardín
  */
-public interface Pokemon {
-
-	public String getImageURL();
-
-	public String getName();
-
-	public String getType();
-
+public class PokemonItemSelectorReturnType implements ItemSelectorReturnType {
 }

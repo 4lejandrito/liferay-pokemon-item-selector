@@ -1,4 +1,4 @@
-Bundle-Name: Liferay Talks Item Selector
-Bundle-SymbolicName: com.liferay.talks.item.selector
+Bundle-Name: Liferay Pokemon Item Selector Web
+Bundle-SymbolicName: com.liferay.pokemon.item.selector.web
 Bundle-Version: 1.0.0
-Web-ContextPath: /talks-item-selector
+Web-ContextPath: /pokemon-item-selector-web

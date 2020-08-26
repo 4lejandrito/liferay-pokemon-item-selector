@@ -12,14 +12,17 @@
  * details.
  */
 
-package com.liferay.talks.item.selector.internal.constants;
+package com.liferay.pokemon.item.selector.web.internal.pokemon;
 
 /**
  * @author Alejandro Tardín
  */
-public class PokemonPortletKeys {
+public interface Pokemon {
 
-	public static final String POKEMON =
-		"com_liferay_talks_item_selector_portlet_PokemonPortlet";
+	public String getImageURL();
+
+	public String getName();
+
+	public String getType();
 
 }

@@ -12,19 +12,19 @@
  * details.
  */
 
-package com.liferay.talks.item.selector.internal.item.selector;
+package com.liferay.pokemon.item.selector.web.internal.item.selector;
 
 import com.liferay.item.selector.ItemSelectorReturnType;
 import com.liferay.item.selector.ItemSelectorView;
 import com.liferay.item.selector.ItemSelectorViewDescriptor;
 import com.liferay.item.selector.ItemSelectorViewDescriptorRenderer;
+import com.liferay.pokemon.item.selector.web.internal.pokemon.Pokemon;
+import com.liferay.pokemon.item.selector.web.internal.pokemon.PokemonService;
 import com.liferay.portal.kernel.dao.search.SearchContainer;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSONUtil;
 import com.liferay.portal.kernel.language.Language;
 import com.liferay.portal.kernel.util.JavaConstants;
-import com.liferay.talks.item.selector.internal.pokemon.Pokemon;
-import com.liferay.talks.item.selector.internal.pokemon.PokemonService;
 
 import java.io.IOException;
 

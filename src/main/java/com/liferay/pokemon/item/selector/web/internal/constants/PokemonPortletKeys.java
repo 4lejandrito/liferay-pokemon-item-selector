@@ -12,12 +12,14 @@
  * details.
  */
 
-package com.liferay.talks.item.selector.internal.item.selector;
-
-import com.liferay.item.selector.ItemSelectorReturnType;
+package com.liferay.pokemon.item.selector.web.internal.constants;
 
 /**
  * @author Alejandro Tardín
  */
-public class PokemonItemSelectorReturnType implements ItemSelectorReturnType {
+public class PokemonPortletKeys {
+
+	public static final String POKEMON =
+		"com_liferay_pokemon_item_selector_web_portlet_PokemonPortlet";
+
 }

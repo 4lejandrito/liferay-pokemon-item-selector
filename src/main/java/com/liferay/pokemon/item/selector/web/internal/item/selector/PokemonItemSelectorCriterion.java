@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.talks.item.selector.internal.item.selector;
+package com.liferay.pokemon.item.selector.web.internal.item.selector;
 
 import com.liferay.item.selector.BaseItemSelectorCriterion;
 

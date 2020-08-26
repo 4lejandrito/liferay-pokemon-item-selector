@@ -12,14 +12,14 @@
  * details.
  */
 
-package com.liferay.talks.item.selector.internal.portlet;
+package com.liferay.pokemon.item.selector.web.internal.portlet;
 
 import com.liferay.item.selector.ItemSelector;
+import com.liferay.pokemon.item.selector.web.internal.constants.PokemonPortletKeys;
+import com.liferay.pokemon.item.selector.web.internal.item.selector.PokemonItemSelectorCriterion;
 import com.liferay.portal.kernel.portlet.RequestBackedPortletURLFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.Portal;
-import com.liferay.talks.item.selector.internal.constants.PokemonPortletKeys;
-import com.liferay.talks.item.selector.internal.item.selector.PokemonItemSelectorCriterion;
 
 import java.io.IOException;
 

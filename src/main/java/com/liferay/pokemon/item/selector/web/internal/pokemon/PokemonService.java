@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.talks.item.selector.internal.pokemon;
+package com.liferay.pokemon.item.selector.web.internal.pokemon;
 
 import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.exception.PortalException;

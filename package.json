@@ -10,7 +10,7 @@
 		"liferay-npm-bundler": "2.18.2"
 	},
 	"main": "js/pokemonReact.js",
-	"name": "talks-item-selector",
+	"name": "pokemon-item-selector-web",
 	"scripts": {
 		"build": "babel --source-maps -d build/resources/main/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler"
 	},
