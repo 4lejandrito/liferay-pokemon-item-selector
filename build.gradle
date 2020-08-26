@@ -27,6 +27,11 @@ dependencies {
 	compileOnly group: "org.osgi", name: "osgi.core", version: "6.0.0"
 }
 
+liferay {
+	liferayHome = "$System.env.LIFERAY_HOME"
+	deployDir = file("${liferayHome}/deploy")
+}
+
 repositories {
 	maven {
 		url "https://repository-cdn.liferay.com/nexus/content/groups/public"
