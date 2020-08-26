@@ -3,11 +3,16 @@
 		"@clayui/button": "3.4.0",
 		"react": "16.12.0"
 	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "6.24.1",
+		"liferay-npm-bundler": "2.18.2"
+	},
+	"main": "js/pokemonReact.js",
 	"name": "talks-item-selector",
 	"scripts": {
-		"build": "liferay-npm-scripts build",
-		"checkFormat": "liferay-npm-scripts check",
-		"format": "liferay-npm-scripts fix"
+		"build": "babel --source-maps -d build/resources/main/META-INF/resources src/main/resources/META-INF/resources && liferay-npm-bundler"
 	},
 	"version": "1.0.0"
 }

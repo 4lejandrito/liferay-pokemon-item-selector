@@ -14,7 +14,7 @@
 
 import ClayButton from '@clayui/button';
 import {ItemSelectorDialog} from 'frontend-js-web';
-import React, {useState} from 'react';
+import React, {Fragment, useState} from 'react';
 
 const Pokemon = ({eventName, itemSelectorURL}) => {
 	const [selectedItem, setSelectedItem] = useState();
@@ -39,7 +39,7 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 	});
 
 	return (
-		<>
+		<Fragment>
 			<ClayButton
 				onClick={() => {
 					itemSelectorDialog.open();
@@ -54,7 +54,7 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 					<img src={selectedItem.image} />
 				</div>
 			)}
-		</>
+		</Fragment>
 	);
 };
 

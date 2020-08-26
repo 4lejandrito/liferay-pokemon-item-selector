@@ -1,0 +1,20 @@
+{
+	"config": {
+		"imports": {
+			"frontend-js-react-web": {
+				"classnames": ">=2.2.6",
+				"prop-types": ">=15.7.2",
+				"react": ">=16.8.6",
+				"react-dom": ">=16.8.6"
+			},
+			"frontend-js-web": {
+				"/": ">=3.0.0"
+			}
+		}
+	},
+	"exclude": {
+		"react": true,
+		"react-dom": true,
+		"scheduler": true
+	}
+}
