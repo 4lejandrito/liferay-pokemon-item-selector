@@ -66,11 +66,10 @@ public class PokemonService {
 
 						@Override
 						public String getImageURL() {
-							return pokemonJSONObject.getJSONObject(
-								"sprites"
-							).getString(
-								"front_default"
-							);
+							return String.format(
+								"https://pokeres.bastionbot.org/images" +
+									"/pokemon/%d.png",
+								pokemonJSONObject.getInt("id"));
 						}
 
 						@Override

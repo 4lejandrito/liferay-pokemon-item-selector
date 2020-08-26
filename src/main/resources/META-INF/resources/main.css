@@ -3,3 +3,6 @@
 	margin: 1rem 0;
 	padding: 1rem;
 }
+.preview img {
+	max-width: 100%;
+}
