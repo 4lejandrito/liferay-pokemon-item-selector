@@ -13,11 +13,14 @@
  */
 
 package com.liferay.pokemon.item.selector.web.internal.pokemon;
+import com.liferay.portal.kernel.json.JSONObject;
 
 /**
  * @author Alejandro Tardín
  */
 public interface Pokemon {
+
+	public JSONObject getAll();
 
 	public String getImageURL();
 

@@ -65,6 +65,11 @@ public class PokemonService {
 					new Pokemon() {
 
 						@Override
+						public JSONObject getAll() {
+							return pokemonJSONObject;
+						}
+
+						@Override
 						public String getImageURL() {
 							return String.format(
 								"https://pokeres.bastionbot.org/images" +
