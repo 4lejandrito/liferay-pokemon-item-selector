@@ -6,3 +6,22 @@
 .preview img {
 	max-width: 100%;
 }
+
+dl.base-stats {
+	display: grid;
+	grid-template-columns: 4ch auto;
+	align-items: center;
+}
+
+.base-stats dt {
+	grid-column: 1;
+}
+
+.base-stats dd {
+	grid-column: 2;
+	margin-bottom: 0;
+}
+
+.pokemon-progress-text {
+	min-width: 8ch;
+}
