@@ -13,6 +13,8 @@
  */
 
 import ClayButton from '@clayui/button';
+import ClayCard from '@clayui/card';
+import ClayProgressBar from '@clayui/progress-bar';
 import {ItemSelectorDialog} from 'frontend-js-web';
 import React, {Fragment, useState} from 'react';
 
