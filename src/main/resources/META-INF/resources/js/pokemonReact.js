@@ -51,10 +51,21 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 			</ClayButton>
 
 			{selectedItem && (
-				<div className="preview">
-					<h1>{selectedItem.name}</h1>
-					<img src={selectedItem.image} />
-				</div>
+				<ClayCard
+					className="my-3"
+					displayType="image"
+				>
+					<div className="card-header h3">
+						{selectedItem.name}
+					</div>
+
+					<ClayCard.AspectRatio>
+						<img
+							className="aspect-ratio-item aspect-ratio-item-center-middle aspect-ratio-item-fluid aspect-ratio-item-flush p-1 p-lg-3"
+							src={selectedItem.image}
+						/>
+					</ClayCard.AspectRatio>
+				</ClayCard>
 			)}
 		</Fragment>
 	);
