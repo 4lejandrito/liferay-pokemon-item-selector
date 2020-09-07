@@ -96,11 +96,11 @@ public class PokemonItemSelectorView
 						@Override
 						public String getPayload() {
 							return JSONUtil.put(
-								"all", pokemon.getAll()
-							).put(
 								"image", pokemon.getImageURL()
 							).put(
 								"name", pokemon.getName()
+							).put(
+								"stats", pokemon.getStats()
 							).put(
 								"type", pokemon.getType()
 							).toString();

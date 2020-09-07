@@ -13,19 +13,46 @@
  */
 
 package com.liferay.pokemon.item.selector.web.internal.pokemon;
-import com.liferay.portal.kernel.json.JSONObject;
+
+import java.util.List;
 
 /**
  * @author Alejandro Tardín
  */
 public interface Pokemon {
 
-	public JSONObject getAll();
-
 	public String getImageURL();
 
 	public String getName();
 
+	public List<Stat> getStats();
+
 	public String getType();
+
+	public static class Stat {
+
+		public Stat(String name, int value, int max) {
+			_name = name;
+			_value = value;
+			_max = max;
+		}
+
+		public int getMax() {
+			return _max;
+		}
+
+		public String getName() {
+			return _name;
+		}
+
+		public int getValue() {
+			return _value;
+		}
+
+		private int _max;
+		private String _name;
+		private int _value;
+
+	}
 
 }

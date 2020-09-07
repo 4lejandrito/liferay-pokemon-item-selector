@@ -65,11 +65,6 @@ public class PokemonService {
 					new Pokemon() {
 
 						@Override
-						public JSONObject getAll() {
-							return pokemonJSONObject;
-						}
-
-						@Override
 						public String getImageURL() {
 							return String.format(
 								"https://pokeres.bastionbot.org/images" +
@@ -80,6 +75,36 @@ public class PokemonService {
 						@Override
 						public String getName() {
 							return pokemonJSONObject.getString("name");
+						}
+
+						@Override
+						public List<Stat> getStats() {
+							JSONArray statsJSONArray =
+								pokemonJSONObject.getJSONArray("stats");
+							List<Stat> stats = new ArrayList<>();
+
+							for (int j = 0; j < statsJSONArray.length(); j++) {
+								JSONObject statJSONObject =
+									statsJSONArray.getJSONObject(j);
+
+								stats.add(
+									new Stat(
+										statJSONObject.getJSONObject(
+											"stat"
+										).getString(
+											"name"
+										),
+										statJSONObject.getInt("base_stat"),
+										255));
+							}
+
+							stats.add(
+								new Stat(
+									"experience",
+									pokemonJSONObject.getInt("base_experience"),
+									1000));
+
+							return stats;
 						}
 
 						@Override

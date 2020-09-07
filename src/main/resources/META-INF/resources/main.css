@@ -8,9 +8,9 @@
 }
 
 dl.base-stats {
-	display: grid;
-	grid-template-columns: 4ch auto;
 	align-items: center;
+	display: grid;
+	grid-template-columns: 15ch auto;
 }
 
 .base-stats dt {
