@@ -22,78 +22,17 @@ String eventName = (String)request.getAttribute("eventName");
 %>
 
 <clay:container-fluid>
-	<clay:row>
-		<clay:col
-			md="6"
-		>
-			<clay:button
-				id="selectPokemonBtn"
-				label="Select Pokemon"
-			/>
 
-			<div class="hide preview" id="pokemonPreview">
-				<h1 id="pokemonTitle"></h1>
+	<%
+	Map<String, Object> props = HashMapBuilder.<String, Object>put(
+		"eventName", eventName
+	).put(
+		"itemSelectorURL", itemSelectorURL
+	).build();
+	%>
 
-				<img id="pokemonImage" src="" />
-			</div>
-		</clay:col>
-
-		<clay:col
-			md="6"
-		>
-
-			<%
-			Map<String, Object> props = HashMapBuilder.<String, Object>put(
-				"eventName", eventName
-			).put(
-				"itemSelectorURL", itemSelectorURL
-			).build();
-			%>
-
-			<react:component
-				module="js/pokemonReact"
-				props="<%= props %>"
-			/>
-		</clay:col>
-	</clay:row>
+	<react:component
+		module="js/pokemonReact"
+		props="<%= props %>"
+	/>
 </clay:container-fluid>
-
-<aui:script require="frontend-js-web/liferay/ItemSelectorDialog.es as ItemSelectorDialog">
-	var selectPokemonBtn = document.getElementById('selectPokemonBtn');
-
-	var pokemonPreview = document.getElementById('pokemonPreview');
-
-	var pokemonTitle = document.getElementById('pokemonTitle');
-
-	var pokemonImage = document.getElementById('pokemonImage');
-
-	selectPokemonBtn.addEventListener('click', function(event) {
-		var itemSelectorDialog = new ItemSelectorDialog.default({
-			eventName: '<%= eventName %>',
-			singleSelect: true,
-			title: 'Select a pokemon',
-			url: '<%= itemSelectorURL %>',
-		});
-
-		itemSelectorDialog.open();
-
-		itemSelectorDialog.on('selectedItemChange', function(event) {
-			var selectedItem = event.selectedItem;
-
-			if (selectedItem) {
-
-				//always check this, will be null is user cancel or close the dialog
-
-				var itemValue = JSON.parse(selectedItem.value);
-
-				pokemonTitle.innerText = itemValue.name;
-				pokemonImage.src = itemValue.image;
-
-				pokemonPreview.classList.remove('hide');
-			}
-			else {
-				pokemonPreview.classList.add('hide');
-			}
-		});
-	});
-</aui:script>
