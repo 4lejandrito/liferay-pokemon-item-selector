@@ -22,27 +22,31 @@ String eventName = (String)request.getAttribute("eventName");
 %>
 
 <clay:container-fluid cssClass="text-center">
-	<header>
-		<h2>
+	<clay:row containerElement="header">
+		<clay:col containerElement="h2">
 			<img
 				alt="Poke Liferay Logo"
 				class="mw-100"
 				src='<%= PortalUtil.getStaticResourceURL(request, application.getContextPath() + "/images/logo.png")%>'
 			/>
-		</h2>
-	</header>
+		</clay:col>
+	</clay:row>
+	<clay:row>
+		<clay:col md="6" xl="4" cssClass="mx-md-auto">
+			<%
+			Map<String, Object> props = HashMapBuilder.<String, Object>put(
+				"eventName", eventName
+			).put(
+				"itemSelectorURL", itemSelectorURL
+			).build();
+			%>
 
-
-	<%
-	Map<String, Object> props = HashMapBuilder.<String, Object>put(
-		"eventName", eventName
-	).put(
-		"itemSelectorURL", itemSelectorURL
-	).build();
-	%>
-
-	<react:component
-		module="js/pokemonReact"
-		props="<%= props %>"
-	/>
+			<div>
+				<react:component
+					module="js/pokemonReact"
+					props="<%= props %>"
+				/>
+			</div>
+		</clay:col>
+	</clay:row>
 </clay:container-fluid>
