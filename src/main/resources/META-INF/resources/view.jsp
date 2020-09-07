@@ -21,7 +21,17 @@ String itemSelectorURL = (String)request.getAttribute("itemSelectorURL");
 String eventName = (String)request.getAttribute("eventName");
 %>
 
-<clay:container-fluid>
+<clay:container-fluid cssClass="text-center">
+	<header>
+		<h2>
+			<img
+				alt="Poke Liferay Logo"
+				class="mw-100"
+				src='<%= PortalUtil.getStaticResourceURL(request, application.getContextPath() + "/images/logo.png")%>'
+			/>
+		</h2>
+	</header>
+
 
 	<%
 	Map<String, Object> props = HashMapBuilder.<String, Object>put(
