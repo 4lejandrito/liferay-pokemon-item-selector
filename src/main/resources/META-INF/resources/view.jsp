@@ -27,12 +27,14 @@ String eventName = (String)request.getAttribute("eventName");
 			<img
 				alt="Poke Liferay Logo"
 				class="mw-100"
-				src='<%= PortalUtil.getStaticResourceURL(request, application.getContextPath() + "/images/logo.png")%>'
+				src="<%= PortalUtil.getStaticResourceURL(request, application.getContextPath() + "/images/logo.png") %>"
 			/>
 		</clay:col>
 	</clay:row>
+
 	<clay:row>
-		<clay:col md="6" xl="4" cssClass="mx-md-auto">
+		<clay:col cssClass="mx-md-auto" md="6" xl="4">
+
 			<%
 			Map<String, Object> props = HashMapBuilder.<String, Object>put(
 				"eventName", eventName
