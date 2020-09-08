@@ -24,24 +24,22 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 	return (
 		<Fragment>
 			<ClayButton
-				onClick={() => openSelectionModal({
-					onSelect: ({value}) => setSelectedItem(JSON.parse(value)),
-					selectEventName: eventName,
-					title: 'Select a pokemon',
-					url: itemSelectorURL
-				})}
+				onClick={() =>
+					openSelectionModal({
+						onSelect: ({value}) =>
+							setSelectedItem(JSON.parse(value)),
+						selectEventName: eventName,
+						title: 'Select a pokemon',
+						url: itemSelectorURL,
+					})
+				}
 			>
 				Select a pokemon
 			</ClayButton>
 
 			{selectedItem && (
-				<ClayCard
-					className="my-3"
-					displayType="image"
-				>
-					<div className="card-header h3">
-						{selectedItem.name}
-					</div>
+				<ClayCard className="my-3" displayType="image">
+					<div className="card-header h3">{selectedItem.name}</div>
 
 					<ClayCard.AspectRatio>
 						<img
@@ -50,27 +48,28 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 						/>
 					</ClayCard.AspectRatio>
 					<ClayCard.Body>
-						<ClayCard.Description
-							displayType="title"
-						>
+						<ClayCard.Description displayType="title">
 							Base Stats
 						</ClayCard.Description>
 
 						<div className="card-divider" />
 
 						<dl className="base-stats card-text">
-							{selectedItem.stats.map(
-								({max, name, value}) => (
-									<Fragment key={name}>
-											<dt>{name}</dt>
-											<dd>
-												<ClayProgressBar value={value * 100 / max} className="pokemon-progress">
-													<div className="pokemon-progress-text">{value}/{max}</div>
-												</ClayProgressBar>
-											</dd>
-									</Fragment>
-								)
-							)}
+							{selectedItem.stats.map(({max, name, value}) => (
+								<Fragment key={name}>
+									<dt>{name}</dt>
+									<dd>
+										<ClayProgressBar
+											className="pokemon-progress"
+											value={(value * 100) / max}
+										>
+											<div className="pokemon-progress-text">
+												{value}/{max}
+											</div>
+										</ClayProgressBar>
+									</dd>
+								</Fragment>
+							))}
 						</dl>
 					</ClayCard.Body>
 				</ClayCard>
