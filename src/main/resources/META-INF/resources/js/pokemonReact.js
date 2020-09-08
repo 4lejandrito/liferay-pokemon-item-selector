@@ -15,37 +15,21 @@
 import ClayButton from '@clayui/button';
 import ClayCard from '@clayui/card';
 import ClayProgressBar from '@clayui/progress-bar';
-import {ItemSelectorDialog} from 'frontend-js-web';
+import {openSelectionModal} from 'frontend-js-web';
 import React, {Fragment, useState} from 'react';
 
 const Pokemon = ({eventName, itemSelectorURL}) => {
 	const [selectedItem, setSelectedItem] = useState();
 
-	const itemSelectorDialog = new ItemSelectorDialog({
-		eventName,
-		singleSelect: true,
-		title: 'Select a pokemon',
-		url: itemSelectorURL,
-	});
-
-	itemSelectorDialog.on('selectedItemChange', (event) => {
-		const selectedItem = event.selectedItem;
-
-		if (selectedItem) {
-			const itemValue = JSON.parse(selectedItem.value);
-			setSelectedItem(itemValue);
-		}
-		else {
-			setSelectedItem(null);
-		}
-	});
-
 	return (
 		<Fragment>
 			<ClayButton
-				onClick={() => {
-					itemSelectorDialog.open();
-				}}
+				onClick={() => openSelectionModal({
+					onSelect: ({value}) => setSelectedItem(JSON.parse(value)),
+					selectEventName: eventName,
+					title: 'Select a pokemon',
+					url: itemSelectorURL
+				})}
 			>
 				Select a pokemon
 			</ClayButton>
