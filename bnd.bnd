@@ -1,0 +1,4 @@
+Bundle-Name: Liferay Pokemon Item Selector Web
+Bundle-SymbolicName: com.liferay.pokemon.item.selector.web
+Bundle-Version: 1.0.0
+Web-ContextPath: /pokemon-item-selector-web
