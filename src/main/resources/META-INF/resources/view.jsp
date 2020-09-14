@@ -44,7 +44,7 @@ String eventName = (String)request.getAttribute("eventName");
 			%>
 
 			<clay:button
-				label="Select a Pokémon"
+				label="select-a-pokemon"
 			/>
 
 			<react:component

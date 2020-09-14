@@ -29,12 +29,12 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 						onSelect: ({value}) =>
 							setSelectedItem(JSON.parse(value)),
 						selectEventName: eventName,
-						title: 'Select a Pokémon',
+						title: Liferay.Language.get('select-a-pokemon'),
 						url: itemSelectorURL,
 					})
 				}
 			>
-				Select a pokemon
+				{Liferay.Language.get('select-a-pokemon')}
 			</ClayButton>
 
 			{selectedItem && (
