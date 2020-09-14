@@ -44,6 +44,10 @@ String eventName = (String)request.getAttribute("eventName");
 			%>
 
 			<div>
+				<clay:button
+					label="Select a pokemon"
+				/>
+
 				<react:component
 					module="js/pokemonReact"
 					props="<%= props %>"
