@@ -81,6 +81,7 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 								)
 							)}
 						</div>
+						<audio controls src={selectedItem.cryURL} />
 					</ClayCard.Body>
 				</ClayCard>
 			)}

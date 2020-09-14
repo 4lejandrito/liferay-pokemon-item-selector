@@ -21,6 +21,8 @@ import java.util.List;
  */
 public interface Pokemon {
 
+	public String getCryURL();
+
 	public String getImageURL();
 
 	public String getName();

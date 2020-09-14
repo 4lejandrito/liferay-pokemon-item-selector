@@ -39,6 +39,7 @@ import javax.portlet.PortletURL;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -133,6 +134,7 @@ public class PokemonItemSelectorView
 						_pokemonService.getPokemonCount());
 					pokemonSearchContainer.setResults(
 						_pokemonService.getPokemons(
+							(HttpServletRequest)servletRequest,
 							pokemonSearchContainer.getStart(),
 							pokemonSearchContainer.getEnd()));
 

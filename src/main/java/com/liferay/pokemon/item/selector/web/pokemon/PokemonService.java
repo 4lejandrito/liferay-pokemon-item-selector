@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.util.Http;
+import com.liferay.portal.kernel.util.Portal;
 
 import java.io.IOException;
 
@@ -27,6 +28,9 @@ import java.net.HttpURLConnection;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -41,7 +45,8 @@ public class PokemonService {
 		return 150;
 	}
 
-	public List<Pokemon> getPokemons(int start, int end)
+	public List<Pokemon> getPokemons(
+			HttpServletRequest httpServletRequest, int start, int end)
 		throws PortalException {
 
 		try {
@@ -63,6 +68,16 @@ public class PokemonService {
 
 				pokemons.add(
 					new Pokemon() {
+
+						@Override
+						public String getCryURL() {
+							return _portal.getStaticResourceURL(
+								httpServletRequest,
+								String.format(
+									"%s/cries/%d.ogg",
+									_servletContext.getContextPath(),
+									pokemonJSONObject.getInt("id")));
+						}
 
 						@Override
 						public String getImageURL() {
@@ -153,5 +168,14 @@ public class PokemonService {
 
 	@Reference
 	private Http _http;
+
+	@Reference
+	private Portal _portal;
+
+	@Reference(
+		target = "(osgi.web.symbolicname=com.liferay.pokemon.item.selector.web)",
+		unbind = "-"
+	)
+	private ServletContext _servletContext;
 
 }
