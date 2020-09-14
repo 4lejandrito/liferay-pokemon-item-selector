@@ -11,6 +11,7 @@ dl.base-stats {
 	align-items: center;
 	display: grid;
 	grid-template-columns: 15ch auto;
+	overflow: hidden;
 }
 
 .base-stats dt {
