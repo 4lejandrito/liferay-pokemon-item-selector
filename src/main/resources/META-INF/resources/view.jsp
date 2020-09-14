@@ -23,7 +23,7 @@ String eventName = (String)request.getAttribute("eventName");
 
 <clay:container-fluid cssClass="text-center">
 	<clay:row containerElement="header">
-		<clay:col containerElement="h2">
+		<clay:col containerElement="h2" cssClass="col-md-6 col-xl-4 mx-md-auto">
 			<img
 				alt="Poke Liferay Logo"
 				class="mw-100"
