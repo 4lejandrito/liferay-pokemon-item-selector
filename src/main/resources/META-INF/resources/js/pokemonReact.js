@@ -44,7 +44,7 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 					<ClayCard.AspectRatio>
 						<img
 							className="aspect-ratio-item aspect-ratio-item-center-middle aspect-ratio-item-fluid aspect-ratio-item-flush p-1 p-lg-3"
-							src={selectedItem.image}
+							src={selectedItem.imageURL}
 						/>
 					</ClayCard.AspectRatio>
 					<ClayCard.Body>

@@ -22,7 +22,8 @@ import com.liferay.pokemon.item.selector.web.internal.pokemon.Pokemon;
 import com.liferay.pokemon.item.selector.web.internal.pokemon.PokemonService;
 import com.liferay.portal.kernel.dao.search.SearchContainer;
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.json.JSONUtil;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONSerializer;
 import com.liferay.portal.kernel.language.Language;
 import com.liferay.portal.kernel.util.JavaConstants;
 
@@ -74,6 +75,8 @@ public class PokemonItemSelectorView
 			PortletURL portletURL, String itemSelectedEventName, boolean search)
 		throws IOException, ServletException {
 
+		JSONSerializer jsonSerializer = JSONFactoryUtil.createJSONSerializer();
+
 		_itemSelectorViewDescriptorRenderer.renderHTML(
 			servletRequest, servletResponse, pokemonItemSelectorCriterion,
 			portletURL, itemSelectedEventName, search,
@@ -95,15 +98,7 @@ public class PokemonItemSelectorView
 
 						@Override
 						public String getPayload() {
-							return JSONUtil.put(
-								"image", pokemon.getImageURL()
-							).put(
-								"name", pokemon.getName()
-							).put(
-								"stats", pokemon.getStats()
-							).put(
-								"type", pokemon.getType()
-							).toString();
+							return jsonSerializer.serializeDeep(pokemon);
 						}
 
 						@Override
