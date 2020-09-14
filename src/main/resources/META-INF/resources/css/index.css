@@ -1,0 +1,13 @@
+.portlet-boundary_pokemon_ .portlet-body {
+	margin: 0 auto;
+	max-width: 24em;
+	text-align: center;
+}
+
+.pokemon-stat {
+	min-width: 5rem;
+}
+
+.pokemon-progress-text {
+	min-width: 8ch;
+}

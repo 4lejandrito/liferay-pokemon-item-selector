@@ -16,8 +16,24 @@
 
 <%@ include file="/init.jsp" %>
 
-<div id="<portlet:namespace />-root"></div>
+<header class="mb-3">
+	<img
+		alt="Poke Liferay Logo"
+		class="mw-100"
+		src="<%= PortalUtil.getStaticResourceURL(request, application.getContextPath() + "/images/logo.png") %>"
+	/>
+</header>
+
+<div id="<portlet:namespace />-root">
+	<clay:button
+		label="select-a-pokemon"
+	/>
+</div>
 
 <aui:script require="<%= mainRequire %>">
-	main.default('<portlet:namespace />-root');
+	main.default(
+		'<portlet:namespace />-root',
+		'<%= (String)request.getAttribute("eventName") %>',
+		'<%= (String)request.getAttribute("itemSelectorURL") %>'
+	);
 </aui:script>

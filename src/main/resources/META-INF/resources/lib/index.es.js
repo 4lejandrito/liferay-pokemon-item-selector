@@ -12,9 +12,85 @@
  * details.
  */
 
-import React from 'react';
+import ClayButton from '@clayui/button';
+import ClayCard from '@clayui/card';
+import ClayProgressBar from '@clayui/progress-bar';
+import {openSelectionModal} from 'frontend-js-web';
+import React, {Fragment, useState} from 'react';
 import ReactDOM from 'react-dom';
 
-export default function(elementId) {
-	ReactDOM.render(<span>Pokémon Portlet</span>, document.getElementById(elementId));
+const Pokemon = ({eventName, itemSelectorURL}) => {
+	const [selectedItem, setSelectedItem] = useState();
+
+	return (
+		<Fragment>
+			<ClayButton
+				onClick={() =>
+					openSelectionModal({
+						onSelect: ({value}) =>
+							setSelectedItem(JSON.parse(value)),
+						selectEventName: eventName,
+						title: Liferay.Language.get('select-a-pokemon'),
+						url: itemSelectorURL,
+					})
+				}
+			>
+				{Liferay.Language.get('select-a-pokemon')}
+			</ClayButton>
+
+			{selectedItem && (
+				<ClayCard className="my-4" displayType="image">
+					<ClayCard.AspectRatio>
+						<img
+							className="aspect-ratio-item aspect-ratio-item-center-middle aspect-ratio-item-fluid aspect-ratio-item-flush p-1 p-lg-3"
+							src={selectedItem.imageURL}
+						/>
+					</ClayCard.AspectRatio>
+					<ClayCard.Body>
+						<ClayCard.Description
+							className="text-uppercase"
+							displayType="title"
+						>
+							{selectedItem.name}
+						</ClayCard.Description>
+
+						<div className="card-divider" />
+
+						<div className="card-text">
+							{selectedItem.stats.map(
+								({abbr, max, name, value}) => (
+									<div
+										className="d-flex flex-wrap"
+										key={name}
+									>
+										<small
+											className="font-weight-bold pokemon-stat text-left text-uppercase"
+											title={name}
+										>
+											{abbr}
+										</small>
+										<ClayProgressBar
+											className="flex-grow-1 flex-wrap"
+											value={(value * 100) / max}
+										>
+											<div className="pokemon-progress-text">
+												{value}/{max}
+											</div>
+										</ClayProgressBar>
+									</div>
+								)
+							)}
+						</div>
+					</ClayCard.Body>
+				</ClayCard>
+			)}
+		</Fragment>
+	);
+};
+
+export default function (elementId, eventName, itemSelectorURL) {
+	ReactDOM.render(
+		<Pokemon eventName={eventName} itemSelectorURL={itemSelectorURL} />,
+		document.getElementById(elementId)
+	);
 }
