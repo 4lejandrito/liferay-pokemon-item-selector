@@ -18,4 +18,4 @@ LIFERAY_HOME=~/Projects/liferay-ce/bundles ./gradlew deploy
 
 ## Thanks
 
-@ambrinchaudhary for her awesome JS.
+@ambrinchaudhary & @boton for their awesome JS.
