@@ -43,16 +43,14 @@ String eventName = (String)request.getAttribute("eventName");
 			).build();
 			%>
 
-			<div>
-				<clay:button
-					label="Select a pokemon"
-				/>
+			<clay:button
+				label="Select a pokemon"
+			/>
 
-				<react:component
-					module="js/pokemonReact"
-					props="<%= props %>"
-				/>
-			</div>
+			<react:component
+				module="js/pokemonReact"
+				props="<%= props %>"
+			/>
 		</clay:col>
 	</clay:row>
 </clay:container-fluid>
