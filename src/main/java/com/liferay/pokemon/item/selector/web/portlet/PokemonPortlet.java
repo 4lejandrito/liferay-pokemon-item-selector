@@ -15,13 +15,18 @@
 package com.liferay.pokemon.item.selector.web.portlet;
 
 import com.liferay.frontend.js.loader.modules.extender.npm.NPMResolver;
+import com.liferay.item.selector.ItemSelector;
 import com.liferay.pokemon.item.selector.web.constants.PokemonPortletKeys;
+import com.liferay.pokemon.item.selector.web.item.selector.PokemonItemSelectorCriterion;
+import com.liferay.portal.kernel.portlet.RequestBackedPortletURLFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.util.Portal;
 
 import java.io.IOException;
 
 import javax.portlet.Portlet;
 import javax.portlet.PortletException;
+import javax.portlet.PortletURL;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
@@ -57,10 +62,29 @@ public class PokemonPortlet extends MVCPortlet {
 			_npmResolver.resolveModuleName("pokemon-item-selector-web") +
 				" as main");
 
+		String eventName =
+			_portal.getPortletNamespace(_portal.getPortletId(renderRequest)) +
+				"selectPokemon";
+
+		PortletURL itemSelectorURL = _itemSelector.getItemSelectorURL(
+			RequestBackedPortletURLFactoryUtil.create(renderRequest), eventName,
+			new PokemonItemSelectorCriterion());
+
+		renderRequest.setAttribute(
+			"itemSelectorURL", itemSelectorURL.toString());
+
+		renderRequest.setAttribute("eventName", eventName);
+
 		super.doView(renderRequest, renderResponse);
 	}
 
 	@Reference
+	private ItemSelector _itemSelector;
+
+	@Reference
 	private NPMResolver _npmResolver;
+
+	@Reference
+	private Portal _portal;
 
 }
