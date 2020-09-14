@@ -29,7 +29,7 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 						onSelect: ({value}) =>
 							setSelectedItem(JSON.parse(value)),
 						selectEventName: eventName,
-						title: 'Select a pokemon',
+						title: 'Select a Pokémon',
 						url: itemSelectorURL,
 					})
 				}
