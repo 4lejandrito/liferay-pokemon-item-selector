@@ -14,13 +14,15 @@
 
 import ClayButton from '@clayui/button';
 import ClayCard from '@clayui/card';
+import {ClayToggle} from '@clayui/form';
 import ClayProgressBar from '@clayui/progress-bar';
-import {openSelectionModal} from 'frontend-js-web';
+import {createPortletURL, openSelectionModal} from 'frontend-js-web';
 import React, {Fragment, useState} from 'react';
 import ReactDOM from 'react-dom';
 
 const Pokemon = ({eventName, itemSelectorURL}) => {
-	const [selectedItem, setSelectedItem] = useState();
+	const [selectedItems, setSelectedItems] = useState([]);
+	const [multiple, setMultiple] = useState(false);
 
 	return (
 		<Fragment>
@@ -28,18 +30,31 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 				onClick={() =>
 					openSelectionModal({
 						onSelect: ({value}) =>
-							setSelectedItem(JSON.parse(value)),
+							setSelectedItems(
+								multiple
+									? value.map((item) => JSON.parse(item))
+									: [JSON.parse(value)]
+							),
 						selectEventName: eventName,
 						title: Liferay.Language.get('select-a-pokemon'),
-						url: itemSelectorURL,
+						url: createPortletURL(itemSelectorURL, {
+							multipleSelection: multiple,
+							p_p_id:
+								'com_liferay_item_selector_web_portlet_ItemSelectorPortlet',
+						}),
+						multiple,
 					})
 				}
 			>
 				{Liferay.Language.get('select-a-pokemon')}
 			</ClayButton>
 
-			{selectedItem && (
-				<ClayCard className="my-4" displayType="image">
+			<span className="ml-3">
+				<ClayToggle label={Liferay.Language.get('multiple')} onToggle={setMultiple} toggled={multiple} />
+			</span>
+
+			{selectedItems.map((selectedItem, i) => (
+				<ClayCard className="my-4" displayType="image" key={i}>
 					<ClayCard.AspectRatio>
 						<img
 							className="aspect-ratio-item aspect-ratio-item-center-middle aspect-ratio-item-fluid aspect-ratio-item-flush p-1 p-lg-3"
@@ -83,7 +98,7 @@ const Pokemon = ({eventName, itemSelectorURL}) => {
 						</div>
 					</ClayCard.Body>
 				</ClayCard>
-			)}
+			))}
 		</Fragment>
 	);
 };
