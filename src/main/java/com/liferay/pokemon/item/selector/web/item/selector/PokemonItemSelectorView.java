@@ -26,6 +26,7 @@ import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONSerializer;
 import com.liferay.portal.kernel.language.Language;
 import com.liferay.portal.kernel.util.JavaConstants;
+import com.liferay.portal.kernel.util.ParamUtil;
 
 import java.io.IOException;
 
@@ -123,17 +124,26 @@ public class PokemonItemSelectorView
 				public SearchContainer<Pokemon> getSearchContainer()
 					throws PortalException {
 
+					PortletRequest portletRequest =
+						(PortletRequest)servletRequest.getAttribute(
+							JavaConstants.JAVAX_PORTLET_REQUEST);
+
 					SearchContainer<Pokemon> pokemonSearchContainer =
 						new SearchContainer<>(
-							(PortletRequest)servletRequest.getAttribute(
-								JavaConstants.JAVAX_PORTLET_REQUEST),
-							portletURL, null, null);
+							portletRequest, portletURL, null, null);
+
+					String keywords = null;
+
+					if (search) {
+						keywords = ParamUtil.getString(
+							portletRequest, "keywords");
+					}
 
 					pokemonSearchContainer.setTotal(
-						_pokemonService.getPokemonCount(null));
+						_pokemonService.getPokemonCount(keywords));
 					pokemonSearchContainer.setResults(
 						_pokemonService.getPokemons(
-							null, pokemonSearchContainer.getStart(),
+							keywords, pokemonSearchContainer.getStart(),
 							pokemonSearchContainer.getEnd()));
 
 					return pokemonSearchContainer;
@@ -144,9 +154,8 @@ public class PokemonItemSelectorView
 					return false;
 				}
 
-				@Override
-				public boolean isShowManagementToolbar() {
-					return false;
+				public boolean isShowSearch() {
+					return true;
 				}
 
 			});
