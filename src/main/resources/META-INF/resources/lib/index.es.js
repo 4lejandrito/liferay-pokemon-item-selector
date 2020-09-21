@@ -16,7 +16,7 @@ import ClayButton from '@clayui/button';
 import ClayCard from '@clayui/card';
 import {ClayToggle} from '@clayui/form';
 import ClayProgressBar from '@clayui/progress-bar';
-import {createPortletURL, openSelectionModal} from 'frontend-js-web';
+import {openItemSelectorModal} from 'item-selector-taglib';
 import React, {Fragment, useState} from 'react';
 import ReactDOM from 'react-dom';
 
@@ -74,7 +74,7 @@ const PokemonSelector = ({eventName, itemSelectorURL}) => {
 		<Fragment>
 			<ClayButton
 				onClick={() =>
-					openSelectionModal({
+					openItemSelectorModal({
 						onSelect: ({value}) =>
 							setSelectedItems(
 								multiple
@@ -83,11 +83,7 @@ const PokemonSelector = ({eventName, itemSelectorURL}) => {
 							),
 						selectEventName: eventName,
 						title: Liferay.Language.get('select-a-pokemon'),
-						url: createPortletURL(itemSelectorURL, {
-							multipleSelection: multiple,
-							p_p_id:
-								'com_liferay_item_selector_web_portlet_ItemSelectorPortlet',
-						}),
+						url: itemSelectorURL,
 						multiple,
 					})
 				}

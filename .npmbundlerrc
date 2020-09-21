@@ -1,8 +1,8 @@
 {
 	"config": {
 		"imports": {
-			"frontend-js-web": {
-				"/": ">=3.0.0"
+			"item-selector-taglib": {
+				"/": ">=4.0.0"
 			}
 		}
 	}
