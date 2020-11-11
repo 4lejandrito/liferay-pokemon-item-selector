@@ -14,8 +14,9 @@
 
 import ClayButton from '@clayui/button';
 import ClayCard from '@clayui/card';
+import {ClayToggle} from '@clayui/form';
 import ClayProgressBar from '@clayui/progress-bar';
-import {ItemSelectorDialog} from 'frontend-js-web';
+import {createPortletURL, openSelectionModal} from 'frontend-js-web';
 import React, {Fragment, useState} from 'react';
 import ReactDOM from 'react-dom';
 
@@ -69,30 +70,38 @@ const PokemonSelector = ({eventName, itemSelectorURL}) => {
 	const [selectedItems, setSelectedItems] = useState([]);
 	const [multiple, setMultiple] = useState(false);
 
-	const itemSelectorDialog = new ItemSelectorDialog({
-		eventName,
-		singleSelect: !multiple,
-		title: Liferay.Language.get('select-a-pokemon'),
-		url: itemSelectorURL
-	});
-
-	itemSelectorDialog.on('selectedItemChange', (event) => {
-		if (event.selectedItem) {
-			const {value} = event.selectedItem;
-
-			setSelectedItems(
-				multiple ? value.map((item) => JSON.parse(item))
-						 : [JSON.parse(value)]);
-		}
-	});
-
 	return (
 		<Fragment>
 			<ClayButton
-				onClick={() => itemSelectorDialog.open()}
+				onClick={() =>
+					openSelectionModal({
+						onSelect: ({value}) =>
+							setSelectedItems(
+								multiple
+									? value.map((item) => JSON.parse(item))
+									: [JSON.parse(value)]
+							),
+						selectEventName: eventName,
+						title: Liferay.Language.get('select-a-pokemon'),
+						url: createPortletURL(itemSelectorURL, {
+							multipleSelection: multiple,
+							p_p_id:
+								'com_liferay_item_selector_web_portlet_ItemSelectorPortlet',
+						}),
+						multiple,
+					})
+				}
 			>
 				{Liferay.Language.get('select-a-pokemon')}
 			</ClayButton>
+
+			<span className="ml-3">
+				<ClayToggle
+					label={Liferay.Language.get('multiple')}
+					onToggle={setMultiple}
+					toggled={multiple}
+				/>
+			</span>
 
 			<div className="align-items-center d-flex flex-wrap justify-content-center mt-2">
 				{selectedItems.map((selectedItem, i) => (

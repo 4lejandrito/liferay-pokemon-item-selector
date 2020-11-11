@@ -4,7 +4,7 @@ Code for Liferay's [/dev/24](https://liferay.dev/24) talk.
 
 Follow [the commits](https://github.com/4lejandrito/liferay-pokemon-item-selector/commits) for a step by step explanation.
 
-**Note:** The new [ItemSelectorViewDescriptor](https://github.com/liferay/liferay-portal/blob/master/modules/apps/item-selector/item-selector-api/src/main/java/com/liferay/item/selector/ItemSelectorViewDescriptor.java) API used in this demo is available from [7.3.0-ga1](https://github.com/liferay/liferay-portal/releases/tag/7.3.0-ga1) onwards.
+**Note:** The new [ItemSelectorViewDescriptor](https://github.com/liferay/liferay-portal/blob/master/modules/apps/item-selector/item-selector-api/src/main/java/com/liferay/item/selector/ItemSelectorViewDescriptor.java) API used in this demo is available from [7.3.0-ga1](https://github.com/liferay/liferay-portal/releases/tag/7.3.0-ga1) onwards and the `openSelectionModal` js function is available from [7.3.5-ga6](https://github.com/liferay/liferay-portal/releases/tag/7.3.5-ga6).
 
 ![Screenshot of the Pokémon item selector open](screenshot.png)
 
